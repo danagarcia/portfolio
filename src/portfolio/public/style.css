@@ -196,31 +196,6 @@ body{
     position: relative;
 }
 
-.left-col::before{
-    content: 'yes, its me';
-    text-transform: capitalize;
-    position: absolute;
-    right: 0;
-    top: -20px;
-}
-
-.left-col::after{
-    content: '';
-    position: absolute;
-    top: -10px;
-    right: 80px;
-    width: 50px;
-    height: 2px;
-    background: #fff;
-    transform-origin: right;
-    transform: rotate(-30deg);
-}
-
-.about-image{
-    border-radius: 10px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
-}
-
 .about-para{
     font-size: 1.2rem;
     font-weight: 300;
