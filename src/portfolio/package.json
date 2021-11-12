@@ -1,0 +1,26 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "portfolio for Dana Garcia",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danagarcia/portfolio.git"
+  },
+  "author": "Dana Garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danagarcia/portfolio/issues"
+  },
+  "homepage": "https://github.com/danagarcia/portfolio#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express.js": "^1.0.0",
+    "nodemailer": "^6.7.0",
+    "nodemon": "^2.0.15"
+  }
+}
