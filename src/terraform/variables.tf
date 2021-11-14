@@ -6,6 +6,11 @@ variable "tenancy_ocid" {
 variable "region" {
 }
 
+# Load Balancer Variables #
+variable "hostname" {
+  default = "danagarcia.com"
+}
+
 # Instance Variables #
 variable "instance_image_ocid" {
   type = map(string)
