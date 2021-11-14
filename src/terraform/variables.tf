@@ -6,13 +6,9 @@ variable "tenancy_ocid" {
 variable "region" {
 }
 
-variable "ad1name" {
-    default = data.oci_identity_availability_domains.ads[0].name
-}
-
-variable "ad2name" {
-    # Check to see if OCI region has multiple availability domains. If not set it equal to the the first.
-    default = length(data.oci_identity_availability_domains.ads) >= 2 ? data.oci_identity_availability_domains.ads[1].name : data.oci_identity_availability_domains.ads[0].name
+# Load Balancer Variables #
+variable "hostname" {
+  default = "danagarcia.com"
 }
 
 # Instance Variables #
@@ -27,10 +23,13 @@ variable "instance_image_ocid" {
     us-sanjose-1 = "ocid1.image.oc1.us-sanjose-1.aaaaaaaacm32nukryvrugwg2aeupbl342mx7oaa6gz4fwfd7uucm7u36alcq"
   }
 }
+variable "instance_shape" {
+  default = "VM.Standard.E2.1.Micro"
+}
 variable "setup_path" {
     # making an assumption here that terraform is being executed locally and within the terraform directory
     default = "../scripts/setup.sh"
 }
-variable "instance_shape" {
-  default = "VM.Standard.E2.1.Micro"
+variable "ssh_public_key_path" {
+  default = "./.ssh/id_rsa.pub"
 }

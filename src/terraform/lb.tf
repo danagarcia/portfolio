@@ -4,13 +4,14 @@ resource "oci_load_balancer" "publiclb" {
         maximum_bandwidth_in_mbps = 10
         minimum_bandwidth_in_mbps = 10
     }
-    compartment_id = var.compartment_id
+    compartment_id = var.compartment_ocid
 
-    subnet_ids = [
+    subnet_ids = length(data.oci_identity_availability_domains.ads.availability_domains) >= 2 ? [
         data.oci_core_subnet.publicsnad1.id,
         data.oci_core_subnet.publicsnad2.id,
+    ] : [
+        data.oci_core_subnet.publicsnad1.id,
     ]
-
     display_name = "publiclb"
 }
 
@@ -32,7 +33,7 @@ resource "oci_load_balancer_path_route_set" "publiclb-prs" {
     name = "publiclb-prs"
 
     path_routes {
-        backend_set_name = oci_load_balancer_backend_set.publiclb-bes.id
+        backend_set_name = oci_load_balancer_backend_set.publiclb-bes.name
         path = "/"
 
         path_match_type {
