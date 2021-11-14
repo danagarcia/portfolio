@@ -17,7 +17,7 @@ sudo firewall-cmd --permanent --add-service=http
 sudo firewall-cmd --reload
 
 echo '########## set project to start on startup ##########'
-sudo echo "npm start $pwd/server.js" >> /etc/rc.local
+sudo echo "npm start ~opc/repos/portfolio/src/portfolio/server.js" >> /etc/rc.local
 
 echo '########## reboot server ##########'
 sudo shutdown -r now
