@@ -5,7 +5,7 @@ resource "oci_core_instance" "web-be-vm1" {
   shape               = var.instance_shape
 
   metadata = {
-    user_data = base64encode("${file("${var.script_path}")}")
+    user_data = base64encode("${file("${var.setup_path}")}")
   }
 
   create_vnic_details {
@@ -29,7 +29,7 @@ resource "oci_core_instance" "web-be-vm2" {
   shape               = var.instance_shape
 
   metadata = {
-    user_data = base64encode("${file("${var.script_path}")}")
+    user_data = base64encode("${file("${var.setup_path}")}")
   }
 
   create_vnic_details {
