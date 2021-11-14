@@ -13,11 +13,13 @@ git clone https://github.com/danagarcia/portfolio.git
 cd ./portfolio/src/portfolio
 
 echo '########## configure firewall ##########'
-sudo firewall-cmd --permanent --add-service=http
-sudo firewall-cmd --reload
+sudo systemctl stop firewalld
+sudo firewall-offline-cmd --add-service=http
+sudo systemctl start firewalld
 
 echo '########## set project to start on startup ##########'
 sudo npm install pm2@latest -g
+sudo pm2 --name Portfolio start npm -- start
 sudo pm2 startup
 sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u opc --hp /home/opc
 
