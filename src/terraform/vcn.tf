@@ -45,7 +45,10 @@ resource "oci_core_security_list" "prodsecuritylist" {
 }
 
 resource "oci_core_subnet" "publicsnad1" {
-  availability_domain = data.oci_identity_availability_domains.ads[0].name
+  availability_domain = try(
+    data.oci_identity_availability_domains.ads[0].name,
+    data.oci_identity_availability_domains.ads.name,
+  )
   cidr_block          = "10.0.1.0/24"
   display_name        = "publicsnad1"
   dns_label           = "publicsnad1"
@@ -61,7 +64,10 @@ resource "oci_core_subnet" "publicsnad1" {
 }
 
 resource "oci_core_subnet" "publicsnad2" {
-  availability_domain = length(data.oci_identity_availability_domains.ads) >= 2 ? data.oci_identity_availability_domains.ads[1].name : data.oci_identity_availability_domains.ads[0].name
+  availability_domain = try(
+    data.oci_identity_availability_domains.ads[1].name,
+    data.oci_identity_availability_domains.ads.name
+  )
   cidr_block          = "10.0.2.0/24"
   display_name        = "publicsnad2"
   dns_label           = "publicsnad2"
