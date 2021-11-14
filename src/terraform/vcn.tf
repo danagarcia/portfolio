@@ -45,7 +45,7 @@ resource "oci_core_security_list" "prodsecuritylist" {
 }
 
 resource "oci_core_subnet" "publicsnad1" {
-  availability_domain = data.oci_identity_availability_domain.ad1.name
+  availability_domain = var.ad1name
   cidr_block          = "10.0.1.0/24"
   display_name        = "publicsnad1"
   dns_label           = "publicsnad1"
@@ -61,7 +61,7 @@ resource "oci_core_subnet" "publicsnad1" {
 }
 
 resource "oci_core_subnet" "publicsnad2" {
-  availability_domain = data.oci_identity_availability_domain.ad2.name
+  availability_domain = var.ad2name
   cidr_block          = "10.0.2.0/24"
   display_name        = "publicsnad2"
   dns_label           = "publicsnad2"
