@@ -1,8 +1,5 @@
 resource "oci_core_instance" "web-be-vm1" {
-  availability_domain = try(
-    data.oci_identity_availability_domains.ads[0].name,
-    data.oci_identity_availability_domains.ads.name
-  )
+  availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
   compartment_id      = var.compartment_ocid
   display_name        = "web-be-vm1"
   shape               = var.instance_shape
@@ -24,8 +21,8 @@ resource "oci_core_instance" "web-be-vm1" {
 
 resource "oci_core_instance" "web-be-vm2" {
   availability_domain = try(
-    data.oci_identity_availability_domains.ads[1].name,
-    data.oci_identity_availability_domains.ads.name
+    data.oci_identity_availability_domains.ads.availability_domains[1].name,
+    data.oci_identity_availability_domains.ads.availability_domains[0].name
   )
   compartment_id      = var.compartment_ocid
   display_name        = "web-be-vm2"
