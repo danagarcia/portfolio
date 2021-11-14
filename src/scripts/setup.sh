@@ -11,7 +11,6 @@ yum install -y git
 mkdir ~/repos && cd ~/repos
 git clone https://github.com/danagarcia/portfolio.git
 cd ./portfolio/src/portfolio
-npm start
 
 echo '########## configure firewall ##########'
 firewall-offline-cmd --add-service=http
@@ -20,6 +19,9 @@ systemctl restart firewalld
 
 echo '########## set project to start on startup ##########'
 echo "npm start $pwd/server.js" >> /etc/rc.local
+
+echo '########## start nodejs project ##########'
+npm start
 
 touch ~opc/userdata.`date +%s`.finish
 echo '################### webserver userdata ends #######################'
