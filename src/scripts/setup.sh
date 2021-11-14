@@ -1,12 +1,4 @@
 #!/bin/bash -x
-while getopts u:d: flag
-do
-    case "${flag}" in
-        u) project_uri=${OPTARG};;
-        d) project_dir=${OPTARG};;
-    esac
-done
-
 echo '################### webserver userdata begins #####################'
 touch ~opc/userdata.`date +%s`.start
 
@@ -17,8 +9,8 @@ yum install -y nodejs
 echo '########## node.js project installation ##########'
 yum install -y git
 mkdir ~/repos && cd ~/repos
-git clone "$project_uri"
-cd $project_dir
+git clone https://github.com/danagarcia/portfolio.git
+cd ./portfolio/src/portfolio
 npm start
 
 echo '########## configure firewall ##########'
