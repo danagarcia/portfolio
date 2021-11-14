@@ -42,6 +42,16 @@ resource "oci_core_security_list" "prodsecuritylist" {
       max = 80
     }
   }
+
+  ingress_security_rules {
+    protocol = "6"
+    source   = "0.0.0.0/0"
+
+    tcp_options {
+      min = 22
+      max = 22
+    }
+  }
 }
 
 resource "oci_core_subnet" "publicsnad1" {
