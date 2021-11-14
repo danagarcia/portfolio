@@ -2,7 +2,12 @@
 echo '################### webserver userdata begins #####################'
 touch ~opc/userdata.`date +%s`.start
 
+echo '########## node.js installation ##########'
+sudo yum install -y oracle-nodejs-release-el7 oracle-release-el7
+sudo yum install -y nodejs
+
 echo '########## node.js project installation ##########'
+sudo yum install -y git
 mkdir ~/repos && cd ~/repos
 git clone https://github.com/danagarcia/portfolio.git
 cd ./portfolio/src/portfolio
