@@ -33,7 +33,7 @@ resource "oci_load_balancer_path_route_set" "publiclb-prs" {
     name = "publiclb-prs"
 
     path_routes {
-        backend_set_name = oci_load_balancer_backend_set.publiclb-bes.id
+        backend_set_name = oci_load_balancer_backend_set.publiclb-bes.name
         path = "/"
 
         path_match_type {
