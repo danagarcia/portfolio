@@ -4,7 +4,7 @@ resource "oci_load_balancer" "publiclb" {
         maximum_bandwidth_in_mbps = 10
         minimum_bandwidth_in_mbps = 10
     }
-    compartment_id = var.compartment_id
+    compartment_id = var.compartment_ocid
 
     subnet_ids = [
         data.oci_core_subnet.publicsnad1.id,
