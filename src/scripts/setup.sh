@@ -2,26 +2,20 @@
 echo '################### webserver userdata begins #####################'
 touch ~opc/userdata.`date +%s`.start
 
-echo '########## node.js installation ##########'
-yum install -y oracle-nodejs-release-el7 oracle-release-el7
-yum install -y nodejs
-
 echo '########## node.js project installation ##########'
-yum install -y git
 mkdir ~/repos && cd ~/repos
 git clone https://github.com/danagarcia/portfolio.git
 cd ./portfolio/src/portfolio
 
 echo '########## configure firewall ##########'
-firewall-offline-cmd --add-service=http
-systemctl enable firewalld
-systemctl restart firewalld
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --reload
 
 echo '########## set project to start on startup ##########'
-echo "npm start $pwd/server.js" >> /etc/rc.local
+sudo echo "npm start $pwd/server.js" >> /etc/rc.local
 
-echo '########## start nodejs project ##########'
-npm start
+echo '########## reboot server ##########'
+sudo shutdown -r now
 
 touch ~opc/userdata.`date +%s`.finish
 echo '################### webserver userdata ends #######################'
