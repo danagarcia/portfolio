@@ -17,7 +17,9 @@ sudo firewall-cmd --permanent --add-service=http
 sudo firewall-cmd --reload
 
 echo '########## set project to start on startup ##########'
-sudo echo "npm start $pwd/server.js" >> /etc/rc.local
+sudo npm install pm2@latest -g
+sudo pm2 startup
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u opc --hp /home/opc
 
 echo '########## reboot server ##########'
 sudo shutdown -r now
