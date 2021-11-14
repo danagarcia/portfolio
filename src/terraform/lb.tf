@@ -6,10 +6,13 @@ resource "oci_load_balancer" "publiclb" {
     }
     compartment_id = var.compartment_ocid
 
-    subnet_ids = [
+    subnet_ids = try([
         data.oci_core_subnet.publicsnad1.id,
         data.oci_core_subnet.publicsnad2.id,
-    ]
+    ],
+    [
+        data.oci_core_subnet.publicsnad1.id,
+    ])
 
     display_name = "publiclb"
 }
