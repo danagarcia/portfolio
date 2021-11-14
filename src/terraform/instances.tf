@@ -1,5 +1,5 @@
 resource "oci_core_instance" "web-be-vm1" {
-  availability_domain = var.ad1name
+  availability_domain = data.oci_identity_availability_domains.ads[0].name
   compartment_id      = var.compartment_ocid
   display_name        = "web-be-vm1"
   shape               = var.instance_shape
@@ -20,7 +20,7 @@ resource "oci_core_instance" "web-be-vm1" {
 }
 
 resource "oci_core_instance" "web-be-vm2" {
-  availability_domain = var.ad2name
+  availability_domain = length(data.oci_identity_availability_domains.ads) >= 2 ? data.oci_identity_availability_domains.ads[1].name : data.oci_identity_availability_domains.ads[0].name
   compartment_id      = var.compartment_ocid
   display_name        = "web-be-vm2"
   shape               = var.instance_shape
