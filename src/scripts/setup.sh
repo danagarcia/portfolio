@@ -8,7 +8,7 @@ sudo yum install -y nodejs
 
 echo '########## node.js project installation ##########'
 sudo yum install -y git
-mkdir ~/repos && cd ~/repos
+mkdir ~opc/repos && cd ~opc/repos
 git clone https://github.com/danagarcia/portfolio.git
 cd ./portfolio/src/portfolio
 
