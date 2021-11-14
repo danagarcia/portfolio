@@ -5,6 +5,7 @@ resource "oci_core_instance" "web-be-vm1" {
   shape               = var.instance_shape
 
   metadata = {
+    ssh_authorized_keys = "${file("${var.ssh_public_key_path}")}"
     user_data = base64encode("${file("${var.setup_path}")}")
   }
 
@@ -29,6 +30,7 @@ resource "oci_core_instance" "web-be-vm2" {
   shape               = var.instance_shape
 
   metadata = {
+    ssh_authorized_keys = "${file("${var.ssh_public_key_path}")}"
     user_data = base64encode("${file("${var.setup_path}")}")
   }
 
