@@ -5,6 +5,16 @@ variable "tenancy_ocid" {
 }
 variable "region" {
 }
+
+variable "ad1name" {
+    default = data.oci_identity_availability_domains.ads[0].name
+}
+
+variable "ad2name" {
+    # Check to see if OCI region has multiple availability domains. If not set it equal to the the first.
+    default = length(data.oci_identity_availability_domains.ads) >= 2 ? data.oci_identity_availability_domains.ads[1].name : data.oci_identity_availability_domains.ads[0].name
+}
+
 # Instance Variables #
 variable "instance_image_ocid" {
   type = map(string)
