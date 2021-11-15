@@ -445,6 +445,7 @@ body{
         flex-direction: column-reverse;
         height: fit-content;
         padding-bottom: 50px;
+        min-height: auto;
     }
     .home .image{
         width: 250px;
@@ -460,6 +461,9 @@ body{
     }
 
     /* about-section */
+    .about-image{
+        max-width: 100%;
+    }
     .about-me-container{
         grid-template-columns: 1fr;
     }
@@ -484,7 +488,11 @@ body{
     p, .sub-heading, .about-para, .left-col::before, .tags{
         font-size: 1.4rem;
     }
+    .home{
+        min-height  : auto;
+    }
     .about-image{
+        max-width: 100%;
         width: 90%;
         margin: auto;
         display: block;
