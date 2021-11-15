@@ -3,6 +3,7 @@ Utilize Terraform, Bash and NodeJS to create a fully automated deployment of a p
 
 # Description
 NodeJS portfolio site (didn't design this myself, just editted 'i am john' portfolio) that is deployed to Oracle Cloud Infrastructure (OCI) via Terraform with a Bash bootstrap for configuration of instances. The porfolio is made highly available if the OCI region supports multiple availability domains, otherwise it will deploy two instances on a single availability domain. The configuration looks like this:
+
 ![Diagram](/img/Diagram1.png?raw=true "Diagram")
 
 # Usage
