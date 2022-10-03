@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
+const computerName = require('computer-name');
 dotenv.config();
 let initialPath = path.join(__dirname, "public");
 let app = express();
@@ -10,6 +11,9 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.sendFile(path.join(initialPath, "index.html"));
 })
+app.get('/device_name', (req, res) => {
+    res.send({ device_name: computerName() });
+});
 app.listen(80, () => {
     console.log('listening on port:80...');
 })

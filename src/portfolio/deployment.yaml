@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: portfolio-web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: portfolio-web-app
+  template:
+    metadata:
+      labels:
+        app: portfolio-web-app
+    spec:
+      containers:
+      - name: portfolio-web-app
+        image: danagarcia/portfolio-web-app
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub

@@ -1,12 +1,14 @@
 let projects = [
     {
-        name: "project one",
-        tags: "#javascript, #fullstack, #ui/ux, #backend",
-        image: "project (1).png",
+        name: "IaC Deployed Portfolio Website",
+        tags: "#infra-as-code, #terraform",
+        image: "project1.png",
+        link: "https://github.com/danagarcia/portfolio",
     },
     {
-        name: "project two",
-        tags: "#javascript, #fullstack",
-        image: "project (2).png",
+        name: "Exchange Online Licensing Script",
+        tags: "#powershell",
+        image: "project2.png",
+        link: "https://github.com/danagarcia/EXO-Licensing",
     }
 ]
